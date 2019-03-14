@@ -56,7 +56,7 @@ class Show extends Component {
               <dt>Author:</dt>
               <dd>{this.state.board.author}</dd>
             </dl>
-            <Link to={`/edit/${this.state.key}`} className="btn btnsuccess">Edit</Link>&nbsp;
+            <Link to={`/edit/${this.state.key}`} className="btn btn-success">Edit</Link>&nbsp;
             <button onClick={this.delete(this.state.key)} className="btn btn-danger">Delete</button>
           </div>
         </div>
