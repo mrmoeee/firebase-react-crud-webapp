@@ -10,11 +10,10 @@ class Show extends Component {
       board: {},
       key: ''
     };
-    this.delete = this.delete.bind(this);
   }
 
   componentDidMount() {
-    const ref = firebase.firestore.collection('boards').doc(this.props.match.params.id);
+    const ref = firebase.firestore().collection('boards').doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
         this.setState({
@@ -30,7 +29,7 @@ class Show extends Component {
   }
 
   delete(id) {
-    firebase.firestore.collection('boards').doc(id).delete().then(() => {
+    firebase.firestore().collection('boards').doc(id).delete().then(() => {
       console.log("Document successfully deleted");
       this.props.history.push("/")
     }).catch((error) => {
@@ -38,30 +37,29 @@ class Show extends Component {
     });
   }
 
-
   render() {
     return (
-      <div className="container">
-        <div className="panel panel-default">
-          <div className="panel-heading">
-            <h4><Link to="/">Board List</Link></h4>
-              <h3 className="panel-title">
-                {this.state.board.title}
-              </h3>
+      <div class="container">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4><Link to="/">Board List</Link></h4>
+            <h3 class="panel-title">
+              {this.state.board.title}
+            </h3>
           </div>
-          <div className="panel-body">
+          <div class="panel-body">
             <dl>
               <dt>Description:</dt>
               <dd>{this.state.board.description}</dd>
               <dt>Author:</dt>
               <dd>{this.state.board.author}</dd>
             </dl>
-            <Link to={`/edit/${this.state.key}`} className="btn btn-success">Edit</Link>&nbsp;
-            <button onClick={this.delete(this.state.key)} className="btn btn-danger">Delete</button>
+            <Link to={`/edit/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;
+            <button onClick={this.delete.bind(this, this.state.key)} class="btn btn-danger">Delete</button>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

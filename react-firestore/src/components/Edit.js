@@ -3,6 +3,7 @@ import firebase from '../Firebase';
 import { Link } from 'react-router-dom';
 
 class Edit extends Component { 
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +14,7 @@ class Edit extends Component {
     };
   }
 
-  componenetDidMount() {
+  componentDidMount() {
     const ref = firebase.firestore().collection('boards').doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
@@ -53,7 +54,7 @@ class Edit extends Component {
         description: '',
         author: ''
       });
-      this.props.history.push("/show"+this.props.match.params.id)
+      this.props.history.push("/show/"+this.props.match.params.id)
     }).catch((error) => {
       console.error("error adding document: ", error);
     });
@@ -69,7 +70,7 @@ class Edit extends Component {
             </h3>
           </div>
           <div className="panel-body">
-            <h4><Link to={`/show${this.state.key}`} className="btn btn-primary">Board List</Link></h4> 
+            <h4><Link to={`/show/${this.state.key}`} className="btn btn-primary">Board List</Link></h4> 
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <label for="title">Title:</label>
@@ -77,13 +78,13 @@ class Edit extends Component {
               </div>
               <div className="form-group">
                 <label for="description">Description:</label>
-                <input type="text" className="form-control" name="title" value={this.state.description} onChange={this.onChange} placeholder="Description" />
+                <input type="text" className="form-control" name="description" value={this.state.description} onChange={this.onChange} placeholder="Description" />
                </div>
               <div className="form-group">
                 <label for="author">Author:</label>
                 <input type="text" className="form-control" name="author" value={this.state.author} onChange={this.onChange} placeholder="Author" />
               </div>
-              <button type="submit" className="btn btn-succes">Submit</button> 
+              <button type="submit" className="btn btn-success">Submit</button> 
             </form>
           </div>
         </div>
