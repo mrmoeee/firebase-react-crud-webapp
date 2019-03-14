@@ -51,21 +51,21 @@ class Create extends Component {
             <h3 className="panel-title">ADD BOARD</h3>
           </div>
           <div className="panel-body">
-            <h4><Link to="/" class="btn btn-primary">Book Lists</Link></h4>
+            <h4><Link to="/" className="btn btn-primary">Book Lists</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <label for="title">Title:</label>
-                <input type="text" class="form-control" name="title" value={title} onChange={this.onChange} placeholder="Title" />
+                <input type="text" className="form-control" name="title" value={title} onChange={this.onChange} placeholder="Title" />
               </div>
               <div className="form-group">
                 <label for="description">Description:</label>
-                <textarea class="form-control" name="description" onChange={this.onChange} placeholder="Description">{description}</textarea>
+                <textarea className="form-control" name="description" onChange={this.onChange} placeholder="Description">{description}</textarea>
                </div>
               <div className="form-group">
                 <label for="author">Author:</label>
-                <input type="text" class="form-control" name="author" value={author} onChange={this.onChange} placeholder="Title" />
+                <input type="text" className="form-control" name="author" value={author} onChange={this.onChange} placeholder="Author" />
               </div>
-              <button type="submit" class="btn btn-succes">Submit</button>
+              <button type="submit" className="btn btn-succes">Submit</button>
             </form>
           </div>
         </div>
